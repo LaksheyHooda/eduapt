@@ -22,8 +22,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1 className="text-white text-xl"> EDUAPT </h1>
-      <h2> An Adaptive Learning and Grading Site </h2>
+      <h1 className="text-white text-xl"> Login </h1>
     </div>
   );
 }
