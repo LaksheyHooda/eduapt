@@ -1,6 +1,24 @@
+'use client'
+
 import Image from "next/image";
+import { db } from '@/config/config';
+import { useEffect } from "react";
+import { doc, setDoc } from "firebase/firestore";
+
 
 export default function Home() {
+  useEffect(() => {
+    const addDocTest = async () => {
+      await setDoc(doc(db, "cities", "LA"), {
+        name: "Los Angeles",
+        state: "CA",
+        country: "USA"
+      });
+    }
+
+    addDocTest();
+  }, []);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
