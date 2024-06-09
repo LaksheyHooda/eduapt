@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        bggreen: "#C0EA8B",
+        greentxtclr: "#1F4203"
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -16,3 +20,10 @@ module.exports = {
   },
   plugins: [],
 };
+
+/**
+ *     colors: {
+      bggreen: "#C0EA8B",
+      greentxtclr: "#1F4203"
+    },
+ */

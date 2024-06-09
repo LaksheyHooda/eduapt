@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <main>
-      <h1 className="f">EDUAPT</h1>
+      <Link href={'/dashboard'} className="fixed text-2xl font-black left-20 top-2">EDUAPT</Link>
       {children}
     </main>
   );
