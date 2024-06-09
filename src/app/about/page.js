@@ -7,12 +7,12 @@ import { doc, setDoc } from "firebase/firestore";
 
 
 export default function Home() {
-  useEffect(() => {
-  }, []);
+  useEffect(() => {}, []);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-white text-xl"> Teacher Dashboard </h1>
+    <div>
+      <h1 className="text-white text-xl"> About us </h1>
+      <h2> We are EDUAPT, a website designed to bring the power of AI and adaptive learning to the masses </h2>
     </div>
   );
 }
