@@ -8,6 +8,7 @@ import { doc, setDoc } from "firebase/firestore";
 
 export default function Home() {
   useEffect(() => {
+    
   }, []);
 
   return (

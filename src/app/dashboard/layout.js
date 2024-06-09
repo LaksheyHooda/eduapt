@@ -10,6 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <main>
+      <h1 className="f">EDUAPT</h1>
       {children}
     </main>
   );

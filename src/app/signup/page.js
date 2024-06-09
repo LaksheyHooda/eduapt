@@ -14,6 +14,9 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [userType, setUserType] = useState("Student")
   
   const router = useRouter();
 
@@ -25,15 +28,27 @@ export default function SignUp() {
     });
   }, []);
 
+  const handleUserTypeChange = (e) => {
+    setUserType(e.target.value);
+  }
+
   const handleSubmit = async (e) => {
     console.log("Signing up");
     createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+    .then(async (userCredential) => {
       // Signed up 
       const user = userCredential.user;
+      await fetch("/api/setUserInfo", {
+        method: "POST",
+        body: JSON.stringify({
+          name: firstName + " " + lastName,
+          email: email,
+          uuid: user.uid,
+          userType: userType
+        })
+      })
     })
     .catch((error) => {
-      const errorCode = error.code;
       const errorMessage = error.message;
       setErrorMessage(errorMessage)
       setError(true)
@@ -55,12 +70,27 @@ export default function SignUp() {
       <h1 className="text-white text-xl"> SignUp </h1>
       <form>
         <label>
+          First Name:
+          <input type="text" name="firstName" onChange={(e) => setFirstName(e.target.value)} />
+        </label>
+        <label>
+          Last Name:
+          <input type="text" name="lastName" onChange={(e) => setLastName(e.target.value)} />
+        </label>
+        <label>
           Email:
           <input type="email" name="email" onChange={onEmailChanged} />
         </label>
         <label>
           Password:
           <input type="password" name="password" onChange={onPasswordChanged} />
+        </label>
+        <label>
+          Are you a student or a teacher?
+          <select onChange={handleUserTypeChange}>
+            <option value="Student">Student</option>
+            <option value="Teacher">Teacher</option>
+          </select>
         </label>
         <Button onClick={handleSubmit}>Sign Up</Button>
       </form>
