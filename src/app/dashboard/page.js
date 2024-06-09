@@ -41,8 +41,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-white text-xl"> laoding... </h1>
+    <div className="flex min-h-screen bg-bggreen flex-col items-center justify-between p-24">
+      <h1 className="text-greentxtclr text-3xl"> loading... </h1>
     </div>
   );
 }

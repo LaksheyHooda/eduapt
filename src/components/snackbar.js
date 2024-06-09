@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Snackbar({ message, open }) {
+export default function Snackbar({ message, open, good }) {
   if (!open) return null;
 
   return (
@@ -10,7 +10,7 @@ export default function Snackbar({ message, open }) {
         bottom: 0,
         left: "50%",
         transform: "translateX(-50%)",
-        backgroundColor: "red",
+        backgroundColor: good ? "green" : "red",
         color: "white",
         padding: "1em",
       }}
