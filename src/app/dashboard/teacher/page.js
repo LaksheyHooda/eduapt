@@ -79,13 +79,17 @@ export default function Dashboard() {
       },
       body: JSON.stringify({
         name: newClassName,
+        classDescription: newClassDescription,
+        students: studentIds,
+        instructorName: currentUserData.name,
+        primaryInstructor: currentUserData.uuid,
       }),
     });
 
     console.log(response);
 
     if (response.status === 200) {
-      setSnackbarMessage("Class created successfully");
+      setSnackbarMessage(`Created Class: ${newClassName} successfully`);
     } else {
       setSnackbarMessage("An error occurred. Please try again.");
       setStartedUploadSuccessfully(false);
