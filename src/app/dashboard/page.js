@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import { auth } from '@/config/config';
+import { auth } from "@/config/config";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
@@ -18,14 +18,14 @@ export default function Home() {
       }),
     }).then((res) => res.json());
 
-    if(response === "Student") {
+    if (response.userType === "Student") {
       router.push("/dashboard/student");
-    } else if(response === "Teacher") {
+    } else if (response.userType === "Teacher") {
       router.push("/dashboard/teacher");
     } else {
       // router.push("/login");
     }
-  }
+  };
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
