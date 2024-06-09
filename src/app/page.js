@@ -25,9 +25,7 @@ export default function Home() {
       <NavBar></NavBar>
       <div class="flex justify-center items-center h-screen">
         <div class="text-center">
-          <h1 class="text-6xl text-greentxtclr font-bold py-5 mt-20">
-            EduDapt
-          </h1>
+          <h1 class="text-6xl text-greentxtclr font-bold py-5 mt-20">EDUAPT</h1>
           <h2 class="text-3xl text-gray-600 font-semibold mb-4 py-6">
             Teaching simplified, Learning tailored
           </h2>
