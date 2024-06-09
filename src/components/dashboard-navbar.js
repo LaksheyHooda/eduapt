@@ -10,6 +10,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTableColumns } from "@fortawesome/free-solid-svg-icons";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { redirect } from "next/navigation";
+import logo from "/public/SWAG.png"; // Adjust the path to where the logo is stored
+import Image from "next/image";
+
 import Home from "@/app/page";
 
 export default function Sidebar() {
@@ -122,24 +125,43 @@ export default function Sidebar() {
             </Button>
           </div>
           <div>
+            <div className="">
+              <Image
+                src={logo}
+                alt="EduApt Logo"
+                width={100}
+                height={100}
+                className="p-2"
+              />
+            </div>
             <nav className="mt-8">
               <Link
                 href="/"
                 className="flex items-center space-x-4 py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-300"
               >
-                <FontAwesomeIcon icon={faHouse} />
-                <span className="font-medium text-gray-800">Home</span>
+                <FontAwesomeIcon
+                  icon={faHouse}
+                  className="font-black text-black "
+                />
+                <span className="font-black text-black text-gray-800">
+                  Home
+                </span>
               </Link>
               <Link
                 href="/dashboard"
                 className="flex items-center space-x-4 py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-300"
               >
-                <FontAwesomeIcon icon={faTableColumns} />
-                <span className="font-medium text-gray-800">Dashboard</span>
+                <FontAwesomeIcon
+                  icon={faTableColumns}
+                  className="font-black text-black "
+                />
+                <span className="font-black text-black  text-gray-800">
+                  Dashboard
+                </span>
               </Link>
               <Link
                 href="/about"
-                className="flex items-center space-x-4 py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-300"
+                className="font-black text-black flex items-center space-x-4 py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-300"
               >
                 <svg
                   width="24"
@@ -147,6 +169,7 @@ export default function Sidebar() {
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  className="font-black text-black "
                 >
                   <path
                     d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
@@ -175,14 +198,16 @@ export default function Sidebar() {
                     strokeLinecap="round"
                   />
                 </svg>
-                <span className="font-medium text-gray-800">About</span>
+                <span className="font-black text-black text-gray-800">
+                  About
+                </span>
               </Link>
             </nav>
           </div>
           <div className="flex items-center justify-between">
             <Button
               onClick={logOut}
-              className="flex items-center space-x-4 py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-300"
+              className="font-black text-black flex items-center space-x-4 py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-300"
             >
               <svg
                 className="w-6 h-6 text-gray-500"
@@ -198,11 +223,13 @@ export default function Sidebar() {
                   d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
                 ></path>
               </svg>
-              <span className="font-medium text-gray-800">Logout</span>
+              <span className="font-black text-black text-gray-800">
+                Logout
+              </span>
             </Button>
             <Link
               href="#"
-              className="flex items-center space-x-4 py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-300"
+              className="font-black text-black flex items-center space-x-4 py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-300"
             >
               <svg
                 className="w-6 h-6 text-gray-500"
