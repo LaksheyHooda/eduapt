@@ -7,113 +7,66 @@ import { Button } from "@nextui-org/react";
 import { doc, setDoc } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSort } from "@fortawesome/free-solid-svg-icons";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function StudentClass() {
   const [assignments, setAssignments] = useState([
     {
-      moduleName: "1",
+      moduleName: "Introduction to World War II",
       assignmentName: "Assignment 1",
       date: "June 15, 2024",
-      grade: "A",
-      status: "Completed",
+      grade: "N/A",
+      status: "In Progress",
+      id: "Z0xMAvrtpnRMWS3SHyEr",
     },
     {
-      moduleName: "2",
+      moduleName: "Introduction to World War II",
+      assignmentName: "Assignment 2",
+      date: "June 15, 2024",
+      grade: "N/A",
+      status: "TODO",
+      id: "Z0xMAvrtpnRMWS3SHyEr",
+    },
+    {
+      moduleName: "Introduction to World War II",
+      assignmentName: "Assignment 3",
+      date: "June 15, 2024",
+      grade: "B",
+      status: "Completed",
+      id: "Z0xMAvrtpnRMWS3SHyEr",
+    },
+    {
+      moduleName: "Rise of Totalitarianism",
       assignmentName: "Assignment 1",
-      date: "June 17, 2024",
-      grade: "A",
-      status: "Completed",
+      date: "June 21, 2024",
+      grade: "N/A",
+      status: "In Progress",
+      id: "Z0xMAvrtpnRMWS3SHyEr",
     },
     {
-      moduleName: "1",
+      moduleName: "Rise of Totalitarianism",
       assignmentName: "Assignment 2",
-      date: "June 15, 2024",
-      grade: "A",
-      status: "Completed",
+      date: "June 21, 2024",
+      grade: "N/A",
+      status: "In Progress",
+      id: "Z0xMAvrtpnRMWS3SHyEr",
     },
     {
-      moduleName: "3",
-      assignmentName: "Assignment 5",
-      date: "June 15, 2024",
-      grade: "A",
-      status: "Completed",
-    },
-    {
-      moduleName: "2",
-      assignmentName: "Assignment 2",
-      date: "June 15, 2024",
-      grade: "A",
-      status: "Completed",
-    },
-    {
-      moduleName: "2",
-      assignmentName: "Assignment 2",
-      date: "June 15, 2024",
-      grade: "A",
-      status: "Completed",
-    },
-    {
-      moduleName: "2",
-      assignmentName: "Assignment 2",
-      date: "June 15, 2024",
-      grade: "A",
-      status: "Completed",
-    },
-    {
-      moduleName: "2",
-      assignmentName: "Assignment 2",
-      date: "June 15, 2024",
-      grade: "A",
-      status: "Completed",
-    },
-    {
-      moduleName: "2",
-      assignmentName: "Assignment 2",
-      date: "June 15, 2024",
-      grade: "A",
-      status: "Completed",
-    },
-    {
-      moduleName: "2",
-      assignmentName: "Assignment 2",
-      date: "June 15, 2024",
-      grade: "A",
-      status: "Completed",
-    },
-    {
-      moduleName: "2",
-      assignmentName: "Assignment 2",
-      date: "June 15, 2024",
-      grade: "A",
-      status: "Completed",
-    },
-    {
-      moduleName: "2",
-      assignmentName: "Assignment 2",
-      date: "June 15, 2024",
-      grade: "A",
-      status: "Completed",
-    },
-    {
-      moduleName: "2",
-      assignmentName: "Assignment 2",
-      date: "June 15, 2024",
-      grade: "A",
-      status: "Completed",
-    },
-    {
-      moduleName: "2",
-      assignmentName: "Assignment 2",
-      date: "June 15, 2024",
-      grade: "A",
-      status: "Completed",
+      moduleName: "Rise of Totalitarianism",
+      assignmentName: "Assignment 3",
+      date: "June 21, 2024",
+      grade: "N/A",
+      status: "In Progress",
+      id: "Z0xMAvrtpnRMWS3SHyEr",
     },
   ]);
-
+  const searchParams = useSearchParams();
+  const id = searchParams.get("classId");
   const [sortConfig, setSortConfig] = useState({
     key: null,
     direction: "ascending",
   });
+  const router = useRouter();
 
   const sortBy = (key) => {
     let direction = "ascending";
@@ -135,45 +88,49 @@ export default function StudentClass() {
     setAssignments(sortedAssignments);
   };
 
+  const onAssignmentClick = (id) => {
+    router.push(`class/assignment?assignmentId=${id}`);
+  };
+
   useEffect(() => {
-    //   auth.onAuthStateChanged((user) => {
-    //     if (!user) {
-    //       redirect("/login");
-    //     } else {
-    //       fetch("/api/getUserType", {
-    //         method: "POST",
-    //         body: JSON.stringify({
-    //           uuid: user.uid,
-    //         }),
-    //       })
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //           console.log(data);
-    //           if (data.userType !== "Student") {
-    //             redirect("/");
-    //           }
-    //         });
-    //       fetch("/api/getClasses", {
-    //         method: "POST",
-    //         body: JSON.stringify({
-    //           uuid: user.uid,
-    //         }),
-    //       })
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //           setClasses(data);
-    //           console.log(data);
-    //         });
-    //     }
-    //   });
+    // auth.onAuthStateChanged((user) => {
+    //   if (!user) {
+    //     redirect("/login");
+    //   } else {
+    //     fetch("/api/getUserType", {
+    //       method: "POST",
+    //       body: JSON.stringify({
+    //         uuid: user.uid,
+    //       }),
+    //     })
+    //       .then((response) => response.json())
+    //       .then((data) => {
+    //         console.log(data);
+    //         if (data.userType !== "Student") {
+    //           redirect("/");
+    //         }
+    //       });
+    //     fetch("/api/getClassInfo", {
+    //       method: "POST",
+    //       body: JSON.stringify({
+    //         classId: classId,
+    //       }),
+    //     })
+    //       .then((response) => response.json())
+    //       .then((data) => {
+    //         setClasses(data);
+    //         console.log(data);
+    //       });
+    //   }
+    // });
   }, []);
   return (
     <div className="flex bg-bggreen items-center w-screen flex-col h-screen p-10 overflow-x-hidden">
       <div className="flex flex-row">
         <h1 className="text-3xl text-black font-semibold py-10">Course 1</h1>
       </div>
-      <div class="container mx-auto px-4 py-8">
-        <div class="overflow-x-auto">
+      <div class="container mx-auto px-4 py-8 h-[30vh]">
+        <div class="overflow-x-hidden">
           <table class="w-full">
             <thead class="">
               <tr class="text-black">
@@ -211,10 +168,14 @@ export default function StudentClass() {
             </thead>
             <tbody
               id="assignmentBody"
-              className="bg-stone-300 overflow-y-scroll text-black border"
+              className="bg-stone-300 overflow-y-scroll text-black borde px-10"
             >
               {assignments.map((assignment, index) => (
-                <tr key={index}>
+                <tr
+                  key={index}
+                  className="hover:cursor-pointer duration-200 ease-in-out hover:scale-105"
+                  onClick={() => onAssignmentClick(assignment.id)}
+                >
                   <td className="px-4 py-2">{assignment.moduleName}</td>
                   <td className="px-4 py-2">{assignment.assignmentName}</td>
                   <td className="px-4 py-2">{assignment.date}</td>

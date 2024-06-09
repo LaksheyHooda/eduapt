@@ -53,6 +53,26 @@ const getUserInfo = async (body) => {
   }
 };
 
+const getClassInfoStudent = async (body) => {
+  const q = query(
+    collection(db, "classes"),
+    where("students", "array-contains", body.uuid)
+  );
+  try {
+    const querySnapshot = await getDocs(q);
+    let classes = [];
+    querySnapshot.forEach((doc) => {
+      let docData = doc.data();
+      docData["classId"] = doc.id;
+      classes.push(docData);
+    });
+    return classes;
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
+};
+
 export async function POST(req) {
   const body = await req.json();
   try {
@@ -62,7 +82,8 @@ export async function POST(req) {
         let info = await getClassInfoTeacher(body);
         return NextResponse.json(info);
       } else {
-        //get student info
+        let info = await getClassInfoStudent(body);
+        return NextResponse.json(info);
       }
       let info = await getClassInfo(body);
       return NextResponse.json(info);
