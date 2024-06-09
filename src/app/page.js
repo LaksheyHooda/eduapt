@@ -1,12 +1,11 @@
-'use client'
+"use client";
 
 import Image from "next/image";
-import { db } from '@/config/config';
+import { db } from "@/config/config";
 import { useEffect } from "react";
 import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import NavBar from "@/components/landingpage-navbar";
-
 
 export default function Home() {
   useEffect(() => {
@@ -18,17 +17,38 @@ export default function Home() {
     //     country: "USA"
     //   });
     // }
-
     // addDocTest();
   }, []);
 
   return (
-    <section>
-      <NavBar />
-      <div className="flex min-h-screen flex-col items-center justify-between p-24">
-        <h1 className="text-white text-xl"> EDUAPT </h1>
-        <h2> An Adaptive Learning and Grading Site </h2>
+    <div class="bg-bggreen">
+      <NavBar></NavBar>
+      <div class="flex justify-center items-center h-screen">
+        <div class="text-center">
+          <h1 class="text-6xl text-greentxtclr font-bold py-5 mt-20">
+            EduDapt
+          </h1>
+          <h2 class="text-3xl text-gray-600 font-semibold mb-4 py-6">
+            Teaching simplified, Learning tailored
+          </h2>
+          <div class="flex justify-center">
+            <a
+              href="/signup"
+              class="bg-blue-500 text-white px-8 py-3 rounded-full mr-4"
+            >
+              Create Account
+            </a>
+          </div>
+          <div class="flex justify-center">
+            <p href="#" class="bg-transparent text-black py-3">
+              Already have an account?
+            </p>
+            <a href="/login" class="bg-transparent text-blue-500 px-2 py-3">
+              Sign In
+            </a>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
   );
 }
