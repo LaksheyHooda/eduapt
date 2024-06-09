@@ -21,7 +21,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div class="bg-bggreen">
+    <div className="bg-bggreen">
       <NavBar></NavBar>
       <div class="flex justify-center items-center h-screen">
         <div class="text-center">
