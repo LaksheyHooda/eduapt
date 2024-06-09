@@ -37,7 +37,7 @@ export default function Home() {
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
-            if (data.userType !== "Teacher") {
+            if (data.userType !== "Student") {
               redirect("/");
             }
             setNotifications(data.notifications);

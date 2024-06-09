@@ -8,7 +8,9 @@ import { auth } from "@/config/config";
 import { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTableColumns } from "@fortawesome/free-solid-svg-icons";
-import { redirect } from 'next/navigation'
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import { redirect } from "next/navigation";
+import Home from "@/app/page";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,8 +22,8 @@ export default function Sidebar() {
 
   const logOut = () => {
     auth.signOut();
-    redirect('/')
-    };
+    redirect("/");
+  };
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -120,13 +122,14 @@ export default function Sidebar() {
             </Button>
           </div>
           <div>
-            <div className="mt-12   md:border-2 rounded-full p-4">
-              <Link href="/" className="md:w-48 md:h-48 max-w-full h-auto">
-                <p>Home</p>
-              </Link>
-            </div>
-
             <nav className="mt-8">
+              <Link
+                href="/"
+                className="flex items-center space-x-4 py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-300"
+              >
+                <FontAwesomeIcon icon={faHouse} />
+                <span className="font-medium text-gray-800">Home</span>
+              </Link>
               <Link
                 href="/dashboard"
                 className="flex items-center space-x-4 py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-300"
